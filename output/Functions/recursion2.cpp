@@ -3,12 +3,11 @@
 using namespace std;
 
 int power(int x, int y) {
-    if(x <= 1) {
+    if (y == 0) {
         return 1;
     } else {
         return x * power(x, y - 1);
     }
-
 }
 
 int main() {
@@ -18,15 +17,18 @@ int main() {
     cout << "Enter the base value: ";
     cin >> x;
     cout << "Enter the power value: ";
-    cin >>y;
-    int ans;
+    cin >> y;
 
-    for (int i = 0; i <= y; i++) {
-        ans =x*x;
+    int ans_iterative = 1;
+    int ans_recursive = power(x, y);
+
+    // Iterative calculation
+    for (int i = 0; i < y; i++) {
+        ans_iterative *= x;
     }
-    cout << "By iteration the power of the two inputs is: "<< ans <<endl;
-    cout << "" <<endl;
-    cout<< " By recursion the power of the two inputs is: " << power(x, y) <<endl;
+
+    cout << "By iteration the power of the two inputs is: " << ans_iterative << endl;
+    cout << "By recursion the power of the two inputs is: " << ans_recursive << endl;
 
     return 0;
 }
